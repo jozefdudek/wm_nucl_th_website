@@ -7,7 +7,7 @@ layout: default
 <div>
   <p id="test"> just a bit of text to see the update</p></br>
   
-  <p id="demo"></p>aaa</br>
+  <p id="demo"></p></br>
 </div>
   
 <script>
@@ -33,7 +33,27 @@ writeString = "";
 for (var pub =0; pub < yearList.length; pub++) {
 writeString = writeString.concat("<b>");
 writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
-writeString = writeString.concat("</b><br>");
+writeString = writeString.concat("</b></br>");
+
+if (yearList[pub]["authors"].length < 10){ authsToShow =
+        yearList[pub]["authors"].length; }
+else { authsToShow = 6; }
+
+for (var auth = 0; auth < authsToShow; auth++ ){
+writeString = writeString.concat("<i>");
+writeString =
+writeString.concat(JSON.stringify(yearList[pub]["authors"][auth]["full_name"],null,2));
+writeString = writeString.concat("<i></br>");
+
+if (authsToShow > 1){
+if (auth < (authsToShow-2)){
+writeString = writeString.concat(", ")
+}
+if (auth == authsToShow -2){
+writeString = writeString.concat(" and ")
+}
+}
+}
 }
 
 writeString = writeString.replace(/\$/g,"");
