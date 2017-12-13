@@ -74,8 +74,13 @@ client.get(url, function(response) {
     writeString = writeString.concat(journalString);
 
     doiString = JSON.stringify(yearList[pub]["doi"],null,2);
-    writeString = writeString.concat(doiString);
 
+    writeString = writeString.concat("   <a href=\"http://dx.doi.org/\");
+    writeString = writeString.concat(doiString);
+    writeString = writeString.concat("DOI</a>");
+
+
+//<a href="url">link text</a>
 //http://dx.doi.org/10.1016/j.bbr.2011.03.031
 
     writeString = writeString.concat("</br>--</br>");
