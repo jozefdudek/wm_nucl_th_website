@@ -33,24 +33,26 @@ layout: default
   <!-- 2009 -->
   <br><a id="2009"></a>
 
-  <script> var HttpClient = function() {
+  <script>
+  var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
-        var anHttpRequest = new XMLHttpRequest();
-        anHttpRequest.onreadystatechange = function() { 
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                aCallback(anHttpRequest.responseText);
-        }
-
-        anHttpRequest.open( "GET", aUrl, true );            
-        anHttpRequest.send( null );
+      var anHttpRequest = new XMLHttpRequest();
+      anHttpRequest.onreadystatechange = function() { 
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+      }
+  
+    anHttpRequest.open( "GET", aUrl, true );            
+    anHttpRequest.send( null );
     }
   }
 
+  
   for (year = 2009; year <= 2016; year++){
     client = new HttpClient();
-    url = 'https://inspirehep.net//search?p=find+a+Phiala.E.Shanahan.1+or+a+J.J.Dudek.2+or+a+K.N.Orginos.1+or+a+C.E.Carlson.1+and+d+';
+    url = 'https://inspirehep.net//search?p=find+a+Phiala.E.Shanahan.1+or+a+J.J.Dudek.2+or+a+K.N.Orginos.1+or+a+C.E.Carlson.1+and+jy+';
     url = url.concat(year);
-    url = url.concat('&of=recjson&ot=authors,title,publication_info');
+  
     writeString = "<h2>"
     writeString = writeString.concat(year)
     writeString = writeString.concat("</h2>")
