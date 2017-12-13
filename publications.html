@@ -28,7 +28,7 @@ if (anHttpRequest.readyState == 4 && anHttpRequest.status ==
 for(var year = 2017; year >= 2017; year--){
 
  writeString = "<h2>"
- writeString = writeString.concat(year)
+ writeString = writeString.concat( year.toString() )
  writeString = writeString.concat("</h2>")
 
 client = new HttpClient();
