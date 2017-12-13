@@ -41,7 +41,7 @@ client.get(url, function(response) {
     writeString = writeString.concat("<i>");
 
     for (var auth = 0; auth < authsToShow; auth++ ){
-      nameString = nameString.concat(JSON.stringify(yearList[pub]["authors"][auth]["first_name"],null,2));
+      nameString = JSON.stringify(yearList[pub]["authors"][auth]["first_name"],null,2);
       nameString = nameString.concat(" ")
       nameString = nameString.concat(JSON.stringify(yearList[pub]["authors"][auth]["last_name"],null,2));
 
