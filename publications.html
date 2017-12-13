@@ -5,7 +5,7 @@ layout: default
 
 <a id="publications"></a><h1>Journal Publications</h1>
 <div>
-  <p id="test">trying to loop over years -- demo id</p></br>
+  <p id="test">trying to loop over years -- no year loop</p></br>
   
   <p id="demo"></p></br>
 
@@ -25,7 +25,7 @@ if (anHttpRequest.readyState == 4 && anHttpRequest.status ==
   }
 }
 
-for(var year = 2017; year >= 2017; year--){
+//for(var year = 2017; year >= 2017; year--){
 
  //writeString = "<h2>";
  //writeString = writeString.concat( " does this appear" );
@@ -39,6 +39,7 @@ client.get(url, function(response) {
   writeString = "";
 
   for (var pub =0; pub < yearList.length; pub++) {
+
     writeString = writeString.concat("<b>");
     writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
     writeString = writeString.concat("</b></br>");
@@ -108,7 +109,7 @@ client.get(url, function(response) {
   //document.getElementById(   year.toString()   ).innerHTML = writeString;
 
 
-}//NEXT YEAR
+//}//NEXT YEAR
 
 });
 </script>
