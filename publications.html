@@ -44,7 +44,7 @@ for (var auth = 0; auth < authsToShow; auth++ ){
 nameString =
 JSON.stringify(yearList[pub]["authors"][auth]["full_name"],null,2);
 
-nameString = writeString.replace(/\"/g,"");
+nameString = nameString.replace(/\"/g,"");
 
 writeString =
 writeString.concat(nameString);
