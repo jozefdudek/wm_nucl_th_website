@@ -101,11 +101,11 @@ client.get(url, function(response) {
   writeString = writeString.replace(/\$/g,"");
   writeString = writeString.replace(/\\/g,"");
 
-  writeString = writeString.concat("</p>");
+  writeString = writeString.concat("<\/p>");
 
   //document.getElementById("demo").innerHTML += writeString;
 
-  document.getElementById(   year.toString()   ).innerHTML += writeString;
+  document.getElementById(   year.toString()   ).innerHTML = writeString;
 
 
 }//NEXT YEAR
