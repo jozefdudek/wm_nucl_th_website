@@ -7,9 +7,9 @@ layout: default
 <div>
   <p id="test">trying to use the 2017 id, demo removed</p></br>
   
- <!-- <a id="demo"></a></br> -->
+  <a id="demo"></a></br>
 
-  <a id='2017'></a></br>
+  <a id="year2017"></a></br>
 </div>
   
 <script>
@@ -106,7 +106,10 @@ client.get(url, function(response) {
 
   //document.getElementById("demo").innerHTML += writeString;
 
-  document.getElementById(   year.toString()   ).innerHTML += writeString;
+  yearString = "year";
+  yearString = yearString.concat( year.toString() );
+
+  document.getElementById(  yearString ).innerHTML += writeString;
 
 });
 
