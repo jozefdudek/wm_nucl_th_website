@@ -28,10 +28,12 @@ url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjso
 client.get(url, function(response) {
 yearList = JSON.parse(response);
 
+writeString = "ready to fill:";
+
 for (var pub =0; pub < yearList.length; pub++) {
-  writeString = writeString.concat("<b>aaaa");
-//  writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
-  writeString = writeString.concat("</b><br>");
+writeString = writeString.concat("<b>aaaa");
+writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
+writeString = writeString.concat("</b><br>");
 }
 
 document.getElementById("demo").innerHTML = "did this get successfully called";
