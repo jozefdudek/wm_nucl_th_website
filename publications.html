@@ -57,7 +57,7 @@ client.get(url, function(response) {
       }
     } //next author
 
-    writeString = writeString.concat("</i>");
+    writeString = writeString.concat("</br></i>");
 
     if (JSON.stringify(yearList[pub]["publication_info"],null,2) != "null"){
       if (yearList[pub]["publication_info"]["title"] != null){
