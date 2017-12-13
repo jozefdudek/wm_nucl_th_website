@@ -9,7 +9,7 @@ layout: default
   
   <p id="demo"></p></br>
 
-  <p id="2017"></p></br>
+  <a id="2017"></a></br>
 </div>
   
 <script>
@@ -29,7 +29,7 @@ for(var year = 2017; year >= 2017; year--){
 
  writeString = "<h2>";
  writeString = writeString.concat( " does this appear" );
- writeString = writeString.concat("</h2>");
+ writeString = writeString.concat("</h2>  <p>");
 
 client = new HttpClient();
 url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info,doi';
@@ -100,6 +100,8 @@ client.get(url, function(response) {
  
   writeString = writeString.replace(/\$/g,"");
   writeString = writeString.replace(/\\/g,"");
+
+  writeString = writeString.concat("</p>");
 
   //document.getElementById("demo").innerHTML += writeString;
 
