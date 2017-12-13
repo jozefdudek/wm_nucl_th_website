@@ -7,7 +7,7 @@ layout: default
 <div>
   <p id="test"> just a bit of text to see the update</p></br>
   
-  <p id="demo">demo-- did this get overwritten</p></br>
+  <p id="demo">the code running should overwrite this</p></br>
 </div>
   
 <script>
@@ -27,7 +27,7 @@ client = new HttpClient();
 url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info';
 client.get(url, function(response) {
 yearList = JSON.parse(response);
-document.getElementById("demo").innerHTML += "did this get successfully called";
+document.getElementById("demo").innerHTML = "did this get successfully called";
 });
 </script>
 
