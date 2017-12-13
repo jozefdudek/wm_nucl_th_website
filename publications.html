@@ -76,6 +76,7 @@ client.get(url, function(response) {
     writeString = writeString.replace(/"/g,"");
 
     doiString = JSON.stringify(yearList[pub]["doi"],null,2);
+    doiString = doiString.replace(/"/g,"");
 
     writeString = writeString.concat("   http:\/\/dx.doi.org\/");
     writeString = writeString.concat(doiString);
