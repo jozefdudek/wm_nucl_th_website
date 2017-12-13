@@ -7,32 +7,52 @@ layout: default
 
 <ul class="publications">
 <!-- moved into year categories by publication date -->
-  <!-- 2017 -->
+  
   <a id="2017"></a>
-  <!-- 2016 -->
-  <br><a id="2016"></a>
+  </br><a id="2016"></a>
+  </br><a id="2015"></a>
+  </br><a id="2014"></a>
+  </br><a id="2013"></a>
+  </br><a id="2012"></a>
+  </br><a id="2011"></a>
+  </br><a id="2010"></a>
+  </br><a id="2009"></a>
   
+
+<script> var HttpClient = function() {
+    this.get = function(aUrl, aCallback) {
+      var anHttpRequest = new XMLHttpRequest();
+      anHttpRequest.onreadystatechange = function() { 
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+      }
   
-  <!-- 2015 -->
-  <br><a id="2015"></a>
-  <!-- 2014 -->
-  <br><a id="2014"></a>
+    anHttpRequest.open( "GET", aUrl, true );            
+    anHttpRequest.send( null );
+    }
+  }
+
+  client = new HttpClient();
+  url =
+  'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info');
+
+  client.get(url, function(response) {
+  list = JSON.parse(response)
+  for (var pub = 0; pub < list.length; pub++) {
+    writeString = writeString.concat("<b>");
+    writeString = writeString.concat(JSON.stringify(list[pub]["title"]["title"],null,2));
+    writeString = writeString.concat("</b></br>");  
+  }
+
+  writeString = writeString.concat("</br>");
+  writeString = writeString.replace(/\"/g,'');
+
+  document.getElementById("2017").innerHTML += writeString;
 
   
-  <!-- 2013 -->
-  <br><a id="2013"></a>
-  <!-- 2012 -->
-  <br><a id="2012"></a>
-  
-  <!-- 2011 -->
-  <br><a id="2011"></a>
+  </script>
 
-  <!-- 2010 -->
-  <br><a id="2010"></a>
   
-  <!-- 2009 -->
-  <br><a id="2009"></a>
-
 <!--
   <script> var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
