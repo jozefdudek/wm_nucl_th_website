@@ -30,7 +30,7 @@ layout: default
         anHttpRequest.send( null );
     }
   }
-  for (year = 2009; year <= 2016; year++){
+  for (year = 2016; year <= 2016; year++){
     client = new HttpClient();
     url = 'https://inspirehep.net//search?p=find+a+Phiala.E.Shanahan.1+or+a+J.J.Dudek.2+or+a+K.N.Orginos.1+or+a+C.E.Carlson.1+and+d+';
     url = url.concat(year);
@@ -81,8 +81,7 @@ layout: default
       writeString = writeString.replace(/\"/g,'');
       document.getElementById(year.toString()).innerHTML += writeString;
     });
-  }
-  </script>
+  }</script>
 
  
   
