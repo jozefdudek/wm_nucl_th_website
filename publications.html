@@ -77,13 +77,13 @@ client.get(url, function(response) {
     doiString = JSON.stringify(yearList[pub]["doi"],null,2);
     doiString = doiString.replace(/"/g,"");
 
-    //linkString = "<a href=\"http:\/\/dx.doi.org\/\"";
-    //linkString = linkString.concat(doiString);
-    //linkString = linkString.concat("\">");
-    //linkString = linkString.concat(journalString);
-    //linkString = linkString.concat("<\/a>");
+    linkString = "<a href=\"http:\/\/dx.doi.org\/\"";
+    linkString = linkString.concat(doiString);
+    linkString = linkString.concat("\">");
+    linkString = linkString.concat(journalString);
+    linkString = linkString.concat("<\/a>");
 
-//    writeString = writeString.concat(linkString);
+    writeString = writeString.concat(linkString);
 
    // writeString = writeString.concat(journalString);
    // writeString = writeString.concat("   http:\/\/dx.doi.org\/");
