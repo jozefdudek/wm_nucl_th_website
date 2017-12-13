@@ -39,11 +39,10 @@ if (yearList[pub]["authors"].length < 10){ authsToShow =
         yearList[pub]["authors"].length; }
 else { authsToShow = 6; }
 
-for (var auth = 0; auth < authsToShow; auth++ ){
 writeString = writeString.concat("<i>");
+for (var auth = 0; auth < authsToShow; auth++ ){
 writeString =
 writeString.concat(JSON.stringify(yearList[pub]["authors"][auth]["full_name"],null,2));
-writeString = writeString.concat("<i></br>");
 
 if (authsToShow > 1){
 if (auth < (authsToShow-2)){
@@ -54,6 +53,9 @@ writeString = writeString.concat(" and ")
 }
 }
 }
+writeString = writeString.concat("<i></br>");
+
+
 }
 
 writeString = writeString.replace(/\$/g,"");
