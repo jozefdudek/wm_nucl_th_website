@@ -7,7 +7,7 @@ layout: default
 <div>
   <p id="test"> just a bit of text to see the update</p></br>
   
-  <p id="demo">the code running should overwrite this</p></br>
+  <p id="demo"></p></br>
 </div>
   
 <script>
@@ -37,7 +37,7 @@ writeString = writeString.concat("</b><br>");
 }
 
 writeString = writeString.replace(/\$/g,"");
-//writeString = writeString.replace(/\\/g,"");
+writeString = writeString.replace(/\\/g,"");
 
 //document.getElementById("demo").innerHTML = "did this get successfully called";
 document.getElementById("demo").innerHTML += writeString;
