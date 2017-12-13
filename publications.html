@@ -38,9 +38,9 @@ for(year = 2017; year >= 2017; year--){
 client = new HttpClient();
 url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info,doi';
 
-client.get(url, JSONstring);
+client.get(url, xx);
 
-yearList = JSON.parse(JSONstring);
+yearList = JSON.parse(xx);
 
 writeString = writeString.concat("<b>");
 writeString = writeString.concat(JSON.stringify(yearList[0]["title"]["title"],null,2));
