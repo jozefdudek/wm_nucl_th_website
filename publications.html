@@ -48,7 +48,7 @@ layout: default
   }
 
   
-  for (year = 2009; year <= 2016; year++){
+  for (year = 2017; year >= 2009; year--){
     client = new HttpClient();
     url = 'https://inspirehep.net//search?p=find+a+Phiala.E.Shanahan.1+or+a+J.J.Dudek.2+or+a+K.N.Orginos.1+or+a+C.E.Carlson.1+and+jy+';
     url = url.concat(year);
@@ -56,6 +56,7 @@ layout: default
     writeString = "<h2>"
     writeString = writeString.concat(year)
     writeString = writeString.concat("</h2>")
+  
     client.get(url, function(response) {
       yearList = JSON.parse(response)
       for (var pub =0; pub < yearList.length; pub++) {
