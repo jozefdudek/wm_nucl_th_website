@@ -33,8 +33,7 @@ layout: default
   <!-- 2009 -->
   <br><a id="2009"></a>
 
-  <script>
-  var HttpClient = function() {
+  <script> var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
       var anHttpRequest = new XMLHttpRequest();
       anHttpRequest.onreadystatechange = function() { 
@@ -54,16 +53,17 @@ layout: default
     url = url.concat(year);
     url = url.concat('&of=recjson&ot=authors,title,publication_info');
 
-    writeString = "<h2>";
-    writeString = writeString.concat(year);
-    writeString = writeString.concat("</h2>");
+    writeString = "<h2>"
+    writeString = writeString.concat(year)
+    writeString = writeString.concat("</h2>")
   
     client.get(url, function(response) {
       yearList = JSON.parse(response)
-      for (var pub =0; pub < yearList.length; pub++) {
+      for (var pub = 0; pub < yearList.length; pub++) {
         writeString = writeString.concat("<b>");
         writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
         writeString = writeString.concat("</b><br>");
+
         if (yearList[pub]["authors"].length < 10){
           authsToShow = yearList[pub]["authors"].length;
         }
@@ -83,6 +83,7 @@ layout: default
             }
           }
         }
+
         if (JSON.stringify(yearList[pub]["publication_info"],null,2) != "null"){
           if (yearList[pub]["publication_info"]["title"] != null){
           writeString = writeString.concat(" ");
