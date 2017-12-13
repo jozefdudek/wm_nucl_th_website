@@ -53,8 +53,8 @@ client.get(url,
     writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
     writeString = writeString.concat("</b></br>");
 
-    if (yearList[pub]["authors"].length < 10){ authsToShow = yearList[pub]["authors"].length; }
-    else { authsToShow = 6; }
+    if (yearList[pub]["authors"].length <= 6){ authsToShow = yearList[pub]["authors"].length; }
+    else { authsToShow = 1; etAl = true; }
 
     writeString = writeString.concat("<i>");
 
@@ -72,8 +72,10 @@ client.get(url,
         if (auth == authsToShow -2){
           writeString = writeString.concat(" and ")
         }
-      }
+      }      
     } //next author
+
+    if(etAl){ writeString = writeString.concat(" et.al."); }
 
     writeString = writeString.concat("</i></br>");
     writeString = writeString.replace(/"/g,"");
