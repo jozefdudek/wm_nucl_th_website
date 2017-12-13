@@ -45,8 +45,6 @@ client.get(url, function(response) {
       nameString = nameString.concat(" ")
       nameString = nameString.concat(JSON.stringify(yearList[pub]["authors"][auth]["last_name"],null,2));
 
-      //nameString = nameString.replace(/"/g,"");
-
       writeString = writeString.concat(nameString);
 
       if (authsToShow > 1){
@@ -59,12 +57,11 @@ client.get(url, function(response) {
       }
     } //next author
 
-    writeString = writeString.concat("</i></br>");
+    writeString = writeString.concat("</i>");
 
     if (JSON.stringify(yearList[pub]["publication_info"],null,2) != "null"){
       if (yearList[pub]["publication_info"]["title"] != null){
-        journalString = "";
-        journalString = journalString.concat(JSON.stringify(yearList[pub]["publication_info"]["title"],null,2));
+        journalString = JSON.stringify(yearList[pub]["publication_info"]["title"],null,2);
         journalString = journalString.concat(" ");
         journalString = journalString.concat(JSON.stringify(yearList[pub]["publication_info"]["volume"],null,2));      
         journalString = journalString.concat(", ");
