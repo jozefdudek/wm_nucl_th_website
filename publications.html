@@ -10,8 +10,6 @@ layout: default
   
   <p id="demo"></p></br>
 
-  <p id="year2017"></p></br>
-
   
 </div>
   
@@ -32,7 +30,7 @@ var HttpClient = function() {
 
 for(year = 2017; year >= 2010; year--){
 
- writeString = "<h2>";
+ writeString = "</br><h2>";
  writeString = writeString.concat(  year.toString() );
  writeString = writeString.concat("</h2></br>");
 
@@ -46,10 +44,6 @@ url = url.concat('&of=recjson&ot=authors,title,publication_info,doi');
 client.get(url,
  function(response) {
   yearList = JSON.parse(response);
-
-  writeString = writeString.concat(  " .. in the get call "  );
-  writeString = writeString.concat(  year.toString() );
-  writeString = writeString.concat(  "</br> "  )
 
   for (var pub =0; pub < yearList.length; pub++) {
 
@@ -118,21 +112,11 @@ client.get(url,
   //writeString = writeString.concat("<\/p>");
 
 
-  //these only get done at the end !!
   document.getElementById("demo").innerHTML += writeString;
 
-  var yearString = "year";
-  yearString = yearString.concat( year.toString() );
-
-  document.getElementById(  "year2017" ).innerHTML += yearString;
 
 }); //end the client get function
 
-
-  //yearString = "outside the function year";
-  //yearString = yearString.concat( year.toString() );
-
-  //document.getElementById(  "year2017" ).innerHTML += yearString;
 
 };//NEXT YEAR
 
