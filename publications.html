@@ -26,28 +26,26 @@ if (anHttpRequest.readyState == 4 && anHttpRequest.status ==
 client = new HttpClient();
 url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info';
 client.get(url, function(response) {
-yearList = JSON.parse(response);
+  yearList = JSON.parse(response);
 
-writeString = "";
+  writeString = "";
 
-for (var pub =0; pub < yearList.length; pub++) {
-writeString = writeString.concat("<b>");
-writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
-writeString = writeString.concat("</b></br>");
+  for (var pub =0; pub < yearList.length; pub++) {
+    writeString = writeString.concat("<b>");
+    writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
+    writeString = writeString.concat("</b></br>");
 
-if (yearList[pub]["authors"].length < 10){ authsToShow =
-        yearList[pub]["authors"].length; }
-else { authsToShow = 6; }
+    if (yearList[pub]["authors"].length < 10){ authsToShow = yearList[pub]["authors"].length; }
+    else { authsToShow = 6; }
 
-writeString = writeString.concat("<i>");
-for (var auth = 0; auth < authsToShow; auth++ ){
-nameString =
-JSON.stringify(yearList[pub]["authors"][auth]["full_name"],null,2);
+    writeString = writeString.concat("<i>");
 
-nameString = nameString.replace(/\"/g,"");
+    for (var auth = 0; auth < authsToShow; auth++ ){
+      nameString = JSON.stringify(yearList[pub]["authors"][auth]["full_name"],null,2);
 
-writeString =
-writeString.concat(nameString);
+      nameString = nameString.replace(/\"/g,"");
+
+      writeString = writeString.concat(nameString);
 
 if (authsToShow > 1){
 if (auth < (authsToShow-2)){
