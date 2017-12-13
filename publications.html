@@ -42,7 +42,8 @@ client.get(url,
  function(response) {
   yearList = JSON.parse(response);
 
-  //writeString = "";
+  writeString = writeString.concat(  " .. in the get call "  );
+  writeString = writeString.concat(  year.toString() );
 
   for (var pub =0; pub < yearList.length; pub++) {
 
