@@ -5,7 +5,7 @@ layout: default
 
 <a id="publications"></a><h1>Journal Publications</h1>
 <div>
-  <p id="test">trying to loop over years</p></br>
+  <p id="test">trying to loop over years -- no header</p></br>
   
   <p id="demo"></p></br>
 
@@ -27,16 +27,16 @@ if (anHttpRequest.readyState == 4 && anHttpRequest.status ==
 
 for(var year = 2017; year >= 2017; year--){
 
- writeString = "<h2>";
- writeString = writeString.concat( " does this appear" );
- writeString = writeString.concat("</h2>  <p>");
+ //writeString = "<h2>";
+ //writeString = writeString.concat( " does this appear" );
+ //writeString = writeString.concat("</h2>  <p>");
 
 client = new HttpClient();
 url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info,doi';
 client.get(url, function(response) {
   yearList = JSON.parse(response);
 
-  //writeString = "";
+  writeString = "";
 
   for (var pub =0; pub < yearList.length; pub++) {
     writeString = writeString.concat("<b>");
@@ -101,7 +101,7 @@ client.get(url, function(response) {
   writeString = writeString.replace(/\$/g,"");
   writeString = writeString.replace(/\\/g,"");
 
-  writeString = writeString.concat("<\/p>");
+  //writeString = writeString.concat("<\/p>");
 
   //document.getElementById("demo").innerHTML += writeString;
 
