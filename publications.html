@@ -29,8 +29,8 @@ client.get(url, function(response) {
 yearList = JSON.parse(response);
 
 for (var pub =0; pub < yearList.length; pub++) {
-  writeString = writeString.concat("<b>");
-  writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
+  writeString = writeString.concat("<b>aaaa");
+//  writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
   writeString = writeString.concat("</b><br>");
 }
 
