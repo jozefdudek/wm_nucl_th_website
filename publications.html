@@ -63,19 +63,7 @@ layout: default
             }
           }
         }
-        if (JSON.stringify(yearList[pub]["publication_info"],null,2) != "null"){
-          if (yearList[pub]["publication_info"]["title"] != null){
-          writeString = writeString.concat(" ");
-          writeString = writeString.concat(JSON.stringify(yearList[pub]["publication_info"]["title"],null,2));
-          writeString = writeString.concat(" ");
-          writeString = writeString.concat(JSON.stringify(yearList[pub]["publication_info"]["volume"],null,2));      
-          writeString = writeString.concat(", ");
-          writeString = writeString.concat(JSON.stringify(yearList[pub]["publication_info"]["pagination"],null,2));    
-          writeString = writeString.concat(" (");
-          writeString = writeString.concat(JSON.stringify(yearList[pub]["publication_info"]["year"],null,2));      
-          writeString = writeString.concat(")");
-          }
-        }
+       
         writeString = writeString.concat("<br>");
       }
       writeString = writeString.replace(/\"/g,'');
