@@ -43,7 +43,7 @@ client.get(url, function(response) {
     for (var auth = 0; auth < authsToShow; auth++ ){
       nameString = JSON.stringify(yearList[pub]["authors"][auth]["full_name"],null,2);
 
-      nameString = nameString.replace(/"/g,"");
+      //nameString = nameString.replace(/"/g,"");
 
       writeString = writeString.concat(nameString);
 
@@ -77,6 +77,7 @@ client.get(url, function(response) {
 
   } //next publication 
 
+  writeString = writeString.replace(/"/g,"");
   writeString = writeString.replace(/\$/g,"");
   writeString = writeString.replace(/\\/g,"");
 
