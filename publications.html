@@ -24,7 +24,7 @@ if (anHttpRequest.readyState == 4 && anHttpRequest.status ==
 }
 
 client = new HttpClient();
-url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info,url';
+url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info,doi';
 client.get(url, function(response) {
   yearList = JSON.parse(response);
 
@@ -72,6 +72,12 @@ client.get(url, function(response) {
        }
     }
     writeString = writeString.concat(journalString);
+
+    doiString = JSON.stringify(yearList[pub]["doi"],null,2);
+    writeString = writeString.concat(doiString);
+
+//http://dx.doi.org/10.1016/j.bbr.2011.03.031
+
     writeString = writeString.concat("</br>--</br>");
 
   } //next publication 
