@@ -19,12 +19,14 @@ layout: default
 var HttpClient = function() {
   this.get = function(aUrl, aCallback) {
     var anHttpRequest = new XMLHttpRequest();
+
     anHttpRequest.onreadystatechange = function() { 
-if (anHttpRequest.readyState == 4 && anHttpRequest.status ==
-200){ aCallback(anHttpRequest.responseText); }
+      if (anHttpRequest.readyState == 4
+          && anHttpRequest.status == 200){ aCallback(anHttpRequest.responseText); }
     }
-  anHttpRequest.open( "GET", aUrl, true );            
-  anHttpRequest.send( null );
+
+    anHttpRequest.open( "GET", aUrl, true );            
+    anHttpRequest.send( null );
   }
 }
 
@@ -36,7 +38,9 @@ for(year = 2017; year >= 2017; year--){
 
 client = new HttpClient();
 url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info,doi';
-client.get(url, function(response) {
+
+client.get(url,
+ function(response) {
   yearList = JSON.parse(response);
 
   //writeString = "";
@@ -114,9 +118,11 @@ client.get(url, function(response) {
 
   document.getElementById(  "year2017" ).innerHTML += yearString;
 
-});
+}); //end the client get function
 
-}//NEXT YEAR
+
+};//NEXT YEAR
+
 </script>
 
  
