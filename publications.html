@@ -29,7 +29,7 @@ for(year = 2017; year >= 2017; year--){
 
  writeString = "<h2>";
  writeString = writeString.concat(  year.toString() );
- writeString = writeString.concat("</h2>");
+ writeString = writeString.concat("</h2></br>");
 
 client = new HttpClient();
 url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info,doi';
@@ -104,9 +104,9 @@ client.get(url, function(response) {
 
   //writeString = writeString.concat("<\/p>");
 
-  document.getElementById("demo").innerHTML += writeString;
+  //document.getElementById("demo").innerHTML += writeString;
 
-  //document.getElementById(   year.toString()   ).innerHTML = writeString;
+  document.getElementById(   year.toString()   ).innerHTML = writeString;
 
 });
 
