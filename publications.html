@@ -32,6 +32,7 @@ layout: default
     }
   }
 
+  {
   client = new HttpClient();
   url =
   'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info';
@@ -43,13 +44,14 @@ layout: default
     writeString = writeString.concat(JSON.stringify(list[pub]["title"]["title"],null,2));
     writeString = writeString.concat("</b></br>");  
   }
-
-    writeString = writeString.concat("</br>");
-  }
+  
   writeString = writeString.replace(/\"/g,'');
-
+  
   document.getElementById("2017").innerHTML += writeString;
+  }
   );
+
+  }
   
   </script>
 
