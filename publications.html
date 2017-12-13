@@ -5,7 +5,8 @@ layout: default
 
 <a id="publications"></a><h1>Journal Publications</h1>
 <div>
-  <p id="test">changed the sync to false -- running down to 2010</p></br>
+  <p id="test">changed the sync to false -- running down to 2010,
+  actually changing th eyar</p></br>
   
   <p id="demo"></p></br>
 
@@ -36,7 +37,11 @@ for(year = 2017; year >= 2010; year--){
  writeString = writeString.concat("</h2></br>");
 
 client = new HttpClient();
-url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info,doi';
+
+//url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info,doi';
+url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+';
+url = url.concat( year.toString() );
+url = url.concat('&of=recjson&ot=authors,title,publication_info,doi');
 
 client.get(url,
  function(response) {
