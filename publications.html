@@ -41,8 +41,13 @@ else { authsToShow = 6; }
 
 writeString = writeString.concat("<i>");
 for (var auth = 0; auth < authsToShow; auth++ ){
+nameString =
+JSON.stringify(yearList[pub]["authors"][auth]["full_name"],null,2);
+
+nameString = writeString.replace(/\"/g,"");
+
 writeString =
-writeString.concat(JSON.stringify(yearList[pub]["authors"][auth]["full_name"],null,2));
+writeString.concat(nameString);
 
 if (authsToShow > 1){
 if (auth < (authsToShow-2)){
