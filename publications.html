@@ -73,6 +73,8 @@ client.get(url, function(response) {
     }
     writeString = writeString.concat(journalString);
 
+    writeString = writeString.replace(/"/g,"");
+
     doiString = JSON.stringify(yearList[pub]["doi"],null,2);
 
    // writeString = writeString.concat("   http://dx.doi.org/");
@@ -87,7 +89,7 @@ client.get(url, function(response) {
 
   } //next publication 
 
-  writeString = writeString.replace(/"/g,"");
+ 
   writeString = writeString.replace(/\$/g,"");
   writeString = writeString.replace(/\\/g,"");
 
