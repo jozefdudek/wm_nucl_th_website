@@ -29,7 +29,7 @@ var HttpClient = function() {
   }
 }
 
-for(year = 2017; year >= 2017; year--){
+for(year = 2017; year >= 2010; year--){
 
  writeString = "<h2>";
  writeString = writeString.concat(  year.toString() );
@@ -110,19 +110,21 @@ client.get(url,
 
   //writeString = writeString.concat("<\/p>");
 
+
+  //these only get done at the end !!
   document.getElementById("demo").innerHTML += writeString;
 
-  //yearString = "year";
-  //yearString = yearString.concat( year.toString() );
-
-  //document.getElementById(  "year2017" ).innerHTML += yearString;
-
-}); //end the client get function
-
-  yearString = "outside the function year";
+  yearString = "year";
   yearString = yearString.concat( year.toString() );
 
   document.getElementById(  "year2017" ).innerHTML += yearString;
+
+}); //end the client get function
+
+  //yearString = "outside the function year";
+  //yearString = yearString.concat( year.toString() );
+
+  //document.getElementById(  "year2017" ).innerHTML += yearString;
 
 };//NEXT YEAR
 
