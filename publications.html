@@ -8,6 +8,8 @@ layout: default
   <p id="test"> just a bit of text to see the update</p></br>
   
   <p id="demo"></p></br>
+
+  <p id="2017"></p></br>
 </div>
   
 <script>
@@ -23,12 +25,18 @@ if (anHttpRequest.readyState == 4 && anHttpRequest.status ==
   }
 }
 
+for(var year = 2017; year >= 2017; year--){
+
+ writeString = "<h2>"
+ writeString = writeString.concat(year)
+ writeString = writeString.concat("</h2>")
+
 client = new HttpClient();
 url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info,doi';
 client.get(url, function(response) {
   yearList = JSON.parse(response);
 
-  writeString = "";
+  //writeString = "";
 
   for (var pub =0; pub < yearList.length; pub++) {
     writeString = writeString.concat("<b>");
@@ -93,7 +101,12 @@ client.get(url, function(response) {
   writeString = writeString.replace(/\$/g,"");
   writeString = writeString.replace(/\\/g,"");
 
-  document.getElementById("demo").innerHTML += writeString;
+  //document.getElementById("demo").innerHTML += writeString;
+
+  document.getElementById(   year.toString()   ).innerHTML += writeString;
+
+
+}//NEXT YEAR
 
 });
 </script>
