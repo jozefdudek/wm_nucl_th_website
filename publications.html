@@ -36,7 +36,7 @@ writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],
 writeString = writeString.concat("</b><br>");
 }
 
-writeString = writeString.replace(/\$/g,"");
+writeString = writeString.replace(/\/g,"");
 
 //document.getElementById("demo").innerHTML = "did this get successfully called";
 document.getElementById("demo").innerHTML += writeString;
