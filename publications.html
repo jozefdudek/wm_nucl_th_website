@@ -5,72 +5,30 @@ layout: default
 
 <a id="publications"></a><h1>Journal Publications</h1>
 
-<ul class="publications">
-<!-- moved into year categories by publication date -->
-  
-  <p id="2017">this gets overwritten by the javascript</p></br>
-<!--  </br><a id="2016"></a>
-  </br><a id="2015"></a>
-  </br><a id="2014"></a>
-  </br><a id="2013"></a>
-  </br><a id="2012"></a>
-  </br><a id="2011"></a>
-  </br><a id="2010"></a>
-  </br><a id="2009"></a> -->
-  
+<a id="demo"></a></br>
 
-<script> var HttpClient = function() {
-    this.get = function(aUrl, aCallback) {
-        var anHttpRequest = new XMLHttpRequest();
-        anHttpRequest.onreadystatechange = function() { 
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                aCallback(anHttpRequest.responseText);
-        }
-        anHttpRequest.open( "GET", aUrl, true );            
-        anHttpRequest.send( null );
+<script>
+var HttpClient = function() {
+  this.get = function(aUrl, aCallback) {
+    var anHttpRequest = new XMLHttpRequest();
+    anHttpRequest.onreadystatechange = function() { 
+if (anHttpRequest.readyState == 4 && anHttpRequest.status ==
+200){ aCallback(anHttpRequest.responseText); }
     }
+  anHttpRequest.open( "GET", aUrl, true );            
+  anHttpRequest.send( null );
   }
-  for (year = 2017; year <= 2017; year++){
-    client = new HttpClient();
-    url = 'https://inspirehep.net//search?p=find+a+Phiala.E.Shanahan.1+or+a+J.J.Dudek.2+or+a+K.N.Orginos.1+or+a+C.E.Carlson.1+and+d+';
-    url = url.concat(year);
-    url = url.concat('&of=recjson&ot=authors,title,publication_info');
-    writeString = "<h2>"
-    writeString = writeString.concat(year)
-    writeString = writeString.concat("</h2>")
+}
+
+{
+client = new HttpClient();
+    url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info';
     client.get(url, function(response) {
-      yearList = JSON.parse(response)
-      for (var pub =0; pub < yearList.length; pub++) {
-        writeString = writeString.concat("<b>");
-        writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
-        writeString = writeString.concat("</b><br>");
-        if (yearList[pub]["authors"].length < 10){
-          authsToShow = yearList[pub]["authors"].length;
-        }
-        else {
-          authsToShow = 10;
-        }
-        for (auth = 0; auth < authsToShow; auth++ ){
-          writeString = writeString.concat(JSON.stringify(yearList[pub]["authors"][auth]["first_name"],null,2));
-          writeString = writeString.concat(" ")
-          writeString = writeString.concat(JSON.stringify(yearList[pub]["authors"][auth]["last_name"],null,2));
-          if (authsToShow > 1){
-            if (auth < (authsToShow-2)){
-              writeString = writeString.concat(", ")
-            }
-            if (auth == authsToShow -2){
-              writeString = writeString.concat(" and ")
-            }
-          }
-        }
-       
-        writeString = writeString.concat("<br>");
-      }
-      writeString = writeString.replace(/\"/g,'');
-      document.getElementById(year.toString()).innerHTML += writeString;
+      yearList = JSON.parse(response);
+      document.getElementById("demo").innerHTML += "did this get
+successfully called";
     });
   }</script>
 
  
-  
-</ul>
+ 
