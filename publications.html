@@ -53,6 +53,7 @@ client.get(url,
     writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
     writeString = writeString.concat("</b></br>");
 
+    etAl = false;
     if (yearList[pub]["authors"].length <= 6){ authsToShow = yearList[pub]["authors"].length; }
     else { authsToShow = 1; etAl = true; }
 
