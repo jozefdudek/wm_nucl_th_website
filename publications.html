@@ -9,14 +9,14 @@ layout: default
 <!-- moved into year categories by publication date -->
   
   <a id="2017"></a>
-  </br><p id="2016"></p>
+<!--  </br><a id="2016"></a>
   </br><a id="2015"></a>
   </br><a id="2014"></a>
   </br><a id="2013"></a>
   </br><a id="2012"></a>
   </br><a id="2011"></a>
   </br><a id="2010"></a>
-  </br><a id="2009"></a>
+  </br><a id="2009"></a> -->
   
 
 <script> var HttpClient = function() {
@@ -30,7 +30,7 @@ layout: default
         anHttpRequest.send( null );
     }
   }
-  for (year = 2009; year <= 2016; year++){
+  for (year = 2017; year <= 2017; year++){
     client = new HttpClient();
     url = 'https://inspirehep.net//search?p=find+a+Phiala.E.Shanahan.1+or+a+J.J.Dudek.2+or+a+K.N.Orginos.1+or+a+C.E.Carlson.1+and+d+';
     url = url.concat(year);
