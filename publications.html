@@ -34,10 +34,10 @@ layout: default
 
   client = new HttpClient();
   url =
-  'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info');
+  'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info';
 
   client.get(url, function(response) {
-  list = JSON.parse(response)
+  list = JSON.parse(response);
   for (var pub = 0; pub < list.length; pub++) {
     writeString = writeString.concat("<b>");
     writeString = writeString.concat(JSON.stringify(list[pub]["title"]["title"],null,2));
@@ -122,7 +122,7 @@ layout: default
       }
       writeString = writeString.replace(/\"/g,'');
       document.getElementById(year.toString()).innerHTML += writeString;
-    });
+    );
   }
   </script>
 -->
