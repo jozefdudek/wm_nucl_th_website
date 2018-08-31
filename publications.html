@@ -42,7 +42,10 @@ client = new HttpClient();
 //url =
 'https://inspirehep.net//search?p=find+a+Dudek+or+K.N.Orginos.1+or+Phiala.E.Shanahan.1+or+a+C.E.Carlson.1+and+aff+Coll.+William+and+Mary+or+William-Mary+Coll.+and+jy+';
 
-url = 'https://inspirehep.net//search?p=find+a+Dudek+or+K.N.Orginos.1+or+Phiala.E.Shanahan.1+or+C.E.Carlson.1+and+aff+william+and+jy+';
+//url =
+'https://inspirehep.net//search?p=find+a+Dudek+or+K.N.Orginos.1+or+Phiala.E.Shanahan.1+or+C.E.Carlson.1+and+aff+william+and+jy+';
+
+url = 'https://inspirehep.net//search?p=find+a+Dudek+and+aff+william+and+jy+';
 url = url.concat( year.toString() );
 url = url.concat('&of=recjson&ot=authors,title,publication_info,doi');
 
@@ -51,9 +54,6 @@ client.get(url,
   yearList = JSON.parse(response);
 
   for (var pub = 0; pub < yearList.length; pub++) {
-
-    //want to prune down to only W&M publications
-    // can use 
 
     writeString = writeString.concat("<b>");
     writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
