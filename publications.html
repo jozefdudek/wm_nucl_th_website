@@ -22,15 +22,15 @@ var HttpClient = function() {
           && anHttpRequest.status == 200){ aCallback(anHttpRequest.responseText); }
     }
 
-    anHttpRequest.open( "GET", aUrl, false ); //changed from true            
+    anHttpRequest.open( "GET", aUrl, false );   
     anHttpRequest.send( null );
   }
 }
 
-for(year = 2018; year >= 2010; year--){
+for(year = 2019; year >= 2010; year--){
 
  writeString = "</br><h2>";
- writeString = writeString.concat(  year.toString() );
+ writeString = writeString.concat( year.toString() );
  writeString = writeString.concat("</h2></br>");
 
 client = new HttpClient();
