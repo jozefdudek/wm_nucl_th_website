@@ -42,7 +42,10 @@ client = new HttpClient();
 
 url = 'https://inspirehep.net/search?ln=en&ln=en&p=';
 
-if(year >= 2017){
+if(year >= 2019){
+url = url.concat('find+%28a+orginos+or+a+J.J.Dudek.2+or+a+c+monahan+or+a+c.e.carlson.1%29+and+jy+');
+}
+else if(year >= 2017){
 url = url.concat('find+%28a+orginos+or+a+J.J.Dudek.2+or+a+c.e.carlson.1%29+and+jy+');
 }
 else{
