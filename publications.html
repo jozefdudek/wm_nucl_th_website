@@ -126,18 +126,14 @@ client.get(url,
   //to wipe out latex chars
   //writeString = writeString.replace(/\$/g,"");
   //writeString = writeString.replace(/\\/g,"");
-
-  //replace double backslash with single backslash
-  writeString = writeString.replace(/\\\\/g,"\\");
-
   //writeString = writeString.concat("<\/p>");
-
-
-  document.getElementById("demo").innerHTML += writeString;
-
 
 }); //end the client get function
 
+//replace double backslash with single backslash
+writeString = writeString.replace(/\\\\/g,"\\");
+
+document.getElementById("demo").innerHTML += writeString;
 
 };//NEXT YEAR
 
