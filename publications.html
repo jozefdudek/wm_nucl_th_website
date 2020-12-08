@@ -64,8 +64,8 @@ url,
 function(response){
 //  writeString = writeString.concat(response); //would write the entire JSON entry
 
-    parsed = JSON.parse(response);
-    list = parsed["hits"]["hits"];
+parsed = JSON.parse(response);
+list = parsed["hits"]["hits"];
 
 for (var pubNum = 0; pubNum < list.length; pubNum++) {
 
@@ -109,7 +109,7 @@ if (JSON.stringify( list[pubNum]["metadata"]["publication_info"],null,2) != "nul
 }
 journalString = journalString.replace(/"/g,"");
 
-doiString = JSON.stringify( list[pubNum]["dois"]["value"],null,2);
+doiString = JSON.stringify( list[pubNum]["metadata"]["dois"]["value"],null,2);
 doiString = doiString.replace(/"/g,"");
 
 linkString = "<a href=\"http:\/\/dx.doi.org\/\"";
@@ -123,14 +123,10 @@ writeString = writeString.concat(linkString);
 // *** LINE BREAK ***
 writeString = writeString.concat("</br>--</br>");
 
-
-
 } //next publication 
 
 
-
-}
-); //end the client get function
+}); //end the client get function
 
 //replace double backslash with single backslash
 writeString = writeString.replace(/\\\\/g,"\\");
