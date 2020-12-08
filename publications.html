@@ -102,11 +102,18 @@ writeString = writeString.concat("</i></br>");
 writeString = writeString.replace(/"/g,"");
 
 // *** JOURNAL ***
-//if (JSON.stringify( list[pubNum]["metadata"]["publication_info"],null,2) != "null"){
-//  if ( list[pubNum]["metadata"]["publication_info"][0]["pubinfo_freetext"] != null){
-    journalString = JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["pubinfo_freetext"],null,2);
-//  }
-//}
+journalString = JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["journal_title"],null,2);
+journalString = journalString.concat(" ");
+
+journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["journal_volume"],null,2);   
+journalString = journalString.concat(", ");
+
+journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["artid"],null,2);  
+journalString = journalString.concat(" (");
+
+journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["year"],null,2);  
+journalString = journalString.concat(")");
+
 journalString = journalString.replace(/"/g,"");
 
 doiString = JSON.stringify( list[pubNum]["metadata"]["dois"][0]["value"],null,2);
