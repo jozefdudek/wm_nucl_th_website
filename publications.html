@@ -63,7 +63,7 @@ list = parsed["hits"]["hits"];
 
 
 // *** LOOP OVER PUBLICATIONS ***
-for (var pubNum = 0; pubNum <= list.length; pubNum++) {
+for (var pubNum = 0; pubNum < list.length; pubNum++) {
 
 //writeString = writeString.concat( JSON.stringify(list[pubNum]["id"], null, 2 ) );
 
@@ -122,7 +122,7 @@ writeString = writeString.concat(doiString);
 writeString = writeString.concat("      ");
 
 
-linkString = "<a href=\"http:\/\/dx.doi.org\/\"";
+linkString = "<a href=\"http:\/\/dx.doi.org\/";
 linkString = linkString.concat(doiString);
 linkString = linkString.concat("\">");
 linkString = linkString.concat(journalString);
