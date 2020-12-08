@@ -115,13 +115,6 @@ journalString = journalString.replace(/"/g,""); //remove any quotes
 doiString = JSON.stringify( list[pubNum]["metadata"]["dois"][0]["value"],null,2);
 doiString = doiString.replace(/['"]+/g,''); //remove any quotes
 
-
-junk = JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["journal_title"],null,2);
-
-writeString = writeString.concat(doiString);
-writeString = writeString.concat("      ");
-
-
 linkString = "<a href=\"http:\/\/dx.doi.org\/";
 linkString = linkString.concat(doiString);
 linkString = linkString.concat("\">");
