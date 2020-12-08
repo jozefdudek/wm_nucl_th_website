@@ -120,6 +120,8 @@ doiString = JSON.stringify( list[pubNum]["metadata"]["dois"][0]["value"],null,2)
 doiString = doiString.replace(/['"]+/g,''); //remove any quotes
 
 
+junk = JSON.stringify( list[pubNum]["metadata"]["dois"][0]["value"],null,2);
+
 writeString = writeString.concat(doiString);
 writeString = writeString.concat("      ");
 
