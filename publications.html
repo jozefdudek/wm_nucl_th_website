@@ -59,23 +59,25 @@ url = url.concat( year.toString() );
 <!-- JSON format has changed, need to parse it -->
 
 
-client.get(url, function(response)
-{
+client.get(
+url,
+function(response){
   writeString = writeString.concat(response);
 
-  parsed = JSON.parse(response);
-  list = parsed["hits"]["hits"];
+//  parsed = JSON.parse(response);
+//  list = parsed["hits"]["hits"];
 
-  for (var pubNum = 0; pubNum < list.length; pubNum++) {
+//  for (var pubNum = 0; pubNum < list.length; pubNum++) {
 
-    writeString = writeString.concat("<b>");
-    writeString = writeString.concat( JSON.stringify( list[pubNum]["id], null, 2 ) ); 
+//    writeString = writeString.concat("<b>");
+//    writeString = writeString.concat( JSON.stringify( list[pubNum]["id], null, 2 ) ); 
    // writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
-    writeString = writeString.concat("</b></br>");
+//    writeString = writeString.concat("</b></br>");
 
-  } //next publication 
+ // } //next publication 
 
-}); //end the client get function
+}
+); //end the client get function
 
 //replace double backslash with single backslash
 writeString = writeString.replace(/\\\\/g,"\\");
