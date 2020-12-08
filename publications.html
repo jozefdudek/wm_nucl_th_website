@@ -69,11 +69,12 @@ function(response){
 
     for (var pubNum = 0; pubNum < list.length; pubNum++) {
       writeString = writeString.concat("<b>");
-      writeString = writeString.concat( JSON.stringify( list[pubNum]["id"], null, 2 ) ); 
+      //writeString = writeString.concat( JSON.stringify(list[pubNum]["id"], null, 2 ) );
+      writeString = writeString.concat( JSON.stringify( list[pubNum]["metadata"]["titles"][0]["title"],null,2));
       writeString = writeString.concat("</b></br>");
     } //next publication 
 
-   // writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
+   //
 
 }
 ); //end the client get function
