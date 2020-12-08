@@ -72,6 +72,8 @@ writeString = writeString.concat("<b>");
 writeString = writeString.concat( JSON.stringify( list[pubNum]["metadata"]["titles"][0]["title"],null,2));
 writeString = writeString.concat("</b></br>");
 
+writeString = writeString.replace(/\\\\/g,"\\"); //replace double backslash with single backslash
+
 // *** AUTHORS ***
 etAl = false;
 auths = list[pubNum]["metadata"]["authors"].length;
@@ -110,9 +112,7 @@ journalString = journalString.concat(" (");
 journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["year"],null,2));  
 journalString = journalString.concat(")");
 
-journalString = journalString.replace(/\\\\/g,"\\"); //replace double backslash with single backslash
-
-//journalString = journalString.replace(/"/g,""); //remove any quotes
+journalString = journalString.replace(/"/g,""); //remove any quotes
 
 doiString = JSON.stringify( list[pubNum]["metadata"]["dois"][0]["value"],null,2);
 doiString = doiString.replace(/['"]+/g,''); //remove any quotes
