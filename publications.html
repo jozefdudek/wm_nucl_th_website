@@ -87,7 +87,7 @@ writeString = writeString.concat("<i>");
 for (var authNum = 0; authNum < authsToShow; authNum++ ){
   nameString = JSON.stringify(list[pubNum]["metadata"]["authors"][authNum]["first_name"],null,2);
   nameString = nameString.concat(" ");
-  nameString = JSON.stringify(list[pubNum]["metadata"]["authors"][authNum]["last_name"],null,2);
+  nameString = nameString.concat( JSON.stringify(list[pubNum]["metadata"]["authors"][authNum]["last_name"],null,2) );
   writeString = writeString.concat(nameString);
 
   if (authsToShow > 1){
