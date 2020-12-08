@@ -73,6 +73,9 @@ writeString = writeString.concat( JSON.stringify( list[pubNum]["metadata"]["titl
 writeString = writeString.concat("</b></br>");
 
 writeString = writeString.replace(/\\\\/g,"\\"); //replace double backslash with single backslash
+writeString = writeString.replace(/\\{o}/g,"&ouml;"); //fix the Mobius problem
+
+//&ouml;   writeString = writeString.replace(/\\\\/g,"\\"); //replace double backslash with single backslash
 
 // *** AUTHORS ***
 etAl = false;
