@@ -105,6 +105,11 @@ if(etAl){ writeString = writeString.concat(" et.al."); }
 writeString = writeString.concat("</i></br>");
 writeString = writeString.replace(/"/g,"");
 
+
+
+
+
+
 // *** JOURNAL ***
 journalString = JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["journal_title"],null,2);
 journalString = journalString.concat(" ");
