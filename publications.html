@@ -109,7 +109,7 @@ if (JSON.stringify( list[pubNum]["metadata"]["publication_info"],null,2) != "nul
 }
 journalString = journalString.replace(/"/g,"");
 
-doiString = JSON.stringify( list[pubNum]["metadata"]["dois"]["value"],null,2);
+doiString = JSON.stringify( list[pubNum]["metadata"]["dois"][0]["value"],null,2);
 doiString = doiString.replace(/"/g,"");
 
 linkString = "<a href=\"http:\/\/dx.doi.org\/\"";
