@@ -34,26 +34,25 @@ for(year = 2020; year >= 2010; year--){
  writeString = writeString.concat(" =======================================</h2></br>");
 
 client = new HttpClient();
-
-//url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info,doi';
-
-//url =
-'https://inspirehep.net//search?p=find+author:dudek+and+aff+william+or+author:shanahan+and+aff+william+and+jy+';
-
-url = 'https://old.inspirehep.net/search?ln=en&ln=en&p=';
+url = 'https://inspirehep.net/api/literature?q=';
 
 if(year >= 2019){
-url = url.concat('find+%28a+orginos+or+a+J.J.Dudek.2+or+a+monahan+or+a+c.e.carlson.1%29+and+tc+p+and+jy+');
+url = url.concat('find+(+a+j.j.dudek.2+or+a+c.j.monahan.1+or+a+c.e.carlson.1+or+a+k.n.orginos.1)');
 }
 else if(year >= 2017){
-url = url.concat('find+%28a+orginos+or+a+J.J.Dudek.2+or+a+c.e.carlson.1%29+and+jy+');
+url = url.concat('find+(+a+j.j.dudek.2+or+a+c.e.carlson.1+or+a+k.n.orginos.1)');
 }
 else{
-url = url.concat('find+%28a+orginos+or+a+c.e.carlson.1%29+and+jy+');
+url = url.concat('find+(+a+c.e.carlson.1+or+a+k.n.orginos.1)');
 }
 
-//url = 'https://inspirehep.net/search?ln=en&ln=en&p=find+%28a+orginos+or+a+shanahan+or+a+dudek+or+a+carlson%29+and+aff+william+and+jy+';
+<!-- get only published -->
+url = url.concat('+and+tc+p+and+jy+');
+
+<!-- from requested year -->
 url = url.concat( year.toString() );
+
+<!-- with the requested data types in the json entry -->
 url = url.concat('&of=recjson&ot=authors,title,publication_info,doi');
 
 client.get(url,
