@@ -110,7 +110,9 @@ journalString = journalString.concat(" (");
 journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["year"],null,2));  
 journalString = journalString.concat(")");
 
-journalString = journalString.replace(/"/g,""); //remove any quotes
+journalString = journalString.replace(/\\\\/g,"\\"); //replace double backslash with single backslash
+
+//journalString = journalString.replace(/"/g,""); //remove any quotes
 
 doiString = JSON.stringify( list[pubNum]["metadata"]["dois"][0]["value"],null,2);
 doiString = doiString.replace(/['"]+/g,''); //remove any quotes
@@ -131,8 +133,6 @@ writeString = writeString.concat("</br>--</br>");
 
 }); //end the client get function
 
-//replace double backslash with single backslash
-writeString = writeString.replace(/\\\\/g,"\\");
 
 document.getElementById("demo").innerHTML += writeString;
 
