@@ -37,7 +37,7 @@ client = new HttpClient();
 url = 'https://inspirehep.net/api/literature?';
 
 <!-- requested data types in the json entry -->
-url = url.concat('fields=authors.full_name,titles,publication_info,doi');
+url = url.concat('fields=authors,titles,publication_info,doi');
 
 if(year >= 2019){
 url = url.concat('&q=find+(+a+j.j.dudek.2+or+a+c.j.monahan.1+or+a+c.e.carlson.1+or+a+k.n.orginos.1)');
@@ -85,7 +85,9 @@ if(auths >= 9){authsToShow = 1; etAl = true;}
 writeString = writeString.concat("<i>");
 
 for (var authNum = 0; authNum < authsToShow; authNum++ ){
-  nameString = JSON.stringify(list[pubNum]["metadata"]["authors"][authNum]["full_name"],null,2);
+  nameString = JSON.stringify(list[pubNum]["metadata"]["authors"][authNum]["first_name"],null,2);
+  nameString = nameString.concat(" ");
+  nameString = JSON.stringify(list[pubNum]["metadata"]["authors"][authNum]["last_name"],null,2);
   writeString = writeString.concat(nameString);
 
   if (authsToShow > 1){
