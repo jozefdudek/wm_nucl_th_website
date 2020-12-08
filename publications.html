@@ -71,12 +71,12 @@ for (var pubNum = 0; pubNum < list.length; pubNum++) {
 
 //writeString = writeString.concat( JSON.stringify(list[pubNum]["id"], null, 2 ) );
 
-// TITLE
+// *** TITLE ***
 writeString = writeString.concat("<b>");
 writeString = writeString.concat( JSON.stringify( list[pubNum]["metadata"]["titles"][0]["title"],null,2));
 writeString = writeString.concat("</b></br>");
 
-//AUTHORS
+// *** AUTHORS ***
 etAl = false;
 auths = list[pubNum]["metadata"]["authors"].length;
 authsToShow = auths;
@@ -100,6 +100,18 @@ if(etAl){ writeString = writeString.concat(" et.al."); }
 
 writeString = writeString.concat("</i></br>");
 writeString = writeString.replace(/"/g,"");
+
+// *** JOURNAL ***
+if (JSON.stringify( list[pubNum]["metadata"]["publication_info"],null,2) != "null"){
+  if ( list[pubNum]["metadata"]["publication_info"]["pubinfo_freetext"] != null){
+    journalString = JSON.stringify(yearList[pub]["publication_info"]["pubinfo_freetext"],null,2);
+  }
+}
+journalString = journalString.replace(/"/g,"");
+
+
+
+
 
 } //next publication 
 
