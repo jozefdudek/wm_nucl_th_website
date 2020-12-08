@@ -37,7 +37,7 @@ client = new HttpClient();
 url = 'https://inspirehep.net/api/literature?';
 
 <!-- requested data types in the json entry -->
-url = url.concat('fields=authors,titles,publication_info,doi');
+url = url.concat('fields=authors,titles,publication_info,dois');
 
 if(year >= 2019){
 url = url.concat('&q=find+(+a+j.j.dudek.2+or+a+c.j.monahan.1+or+a+c.e.carlson.1+or+a+k.n.orginos.1)');
@@ -104,12 +104,24 @@ writeString = writeString.replace(/"/g,"");
 // *** JOURNAL ***
 if (JSON.stringify( list[pubNum]["metadata"]["publication_info"],null,2) != "null"){
   if ( list[pubNum]["metadata"]["publication_info"]["pubinfo_freetext"] != null){
-    journalString = JSON.stringify(yearList[pub]["publication_info"]["pubinfo_freetext"],null,2);
+    journalString = JSON.stringify( list[pubNum]["metadata"]["publication_info"]["pubinfo_freetext"],null,2);
   }
 }
 journalString = journalString.replace(/"/g,"");
 
+doiString = JSON.stringify( list[pubNum]["dois"]["value"],null,2);
+doiString = doiString.replace(/"/g,"");
 
+linkString = "<a href=\"http:\/\/dx.doi.org\/\"";
+linkString = linkString.concat(doiString);
+linkString = linkString.concat("\">");
+linkString = linkString.concat(journalString);
+linkString = linkString.concat("<\/a>");
+
+writeString = writeString.concat(linkString);
+
+// *** LINE BREAK ***
+writeString = writeString.concat("</br>--</br>");
 
 
 
