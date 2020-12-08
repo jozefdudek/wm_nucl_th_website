@@ -59,12 +59,11 @@ url = url.concat( year.toString() );
 <!-- JSON format has changed, need to parse it -->
 
 
-client.get(url,
- function(response) {
+client.get(url, function(response)
+{
+  writeString = writeString.concat(response);
+
   parsed = JSON.parse(response);
-
-  writeString = writeString.concat(parsed);
-
   list = parsed["hits"]["hits"];
 
   for (var pubNum = 0; pubNum < list.length; pubNum++) {
