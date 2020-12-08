@@ -55,26 +55,25 @@ url = url.concat('+and+tc+p+and+jy+');
 <!-- from requested year -->
 url = url.concat( year.toString() );
 
-
+<!-- this does successfully obtain the JSON entry -->
 <!-- JSON format has changed, need to parse it -->
 
 
 client.get(
 url,
 function(response){
-  writeString = writeString.concat(response);
+//  writeString = writeString.concat(response); //would write the entire JSON entry
 
-//  parsed = JSON.parse(response);
-//  list = parsed["hits"]["hits"];
+    parsed = JSON.parse(response);
+    list = parsed["hits"]["hits"];
 
-//  for (var pubNum = 0; pubNum < list.length; pubNum++) {
+    for (var pubNum = 0; pubNum < list.length; pubNum++) {
+      writeString = writeString.concat("<b>");
+      writeString = writeString.concat( JSON.stringify( list[pubNum]["id"], null, 2 ) ); 
+      writeString = writeString.concat("</b></br>");
+    } //next publication 
 
-//    writeString = writeString.concat("<b>");
-//    writeString = writeString.concat( JSON.stringify( list[pubNum]["id], null, 2 ) ); 
    // writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
-//    writeString = writeString.concat("</b></br>");
-
- // } //next publication 
 
 }
 ); //end the client get function
