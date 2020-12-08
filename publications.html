@@ -62,6 +62,9 @@ parsed = JSON.parse(response);
 list = parsed["hits"]["hits"];
 
 
+// *** LINE BREAK ***
+writeString = writeString.concat("-----</br>");
+
 // *** LOOP OVER PUBLICATIONS ***
 for (var pubNum = 0; pubNum < list.length; pubNum++) {
 
