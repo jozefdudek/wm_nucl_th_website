@@ -141,7 +141,7 @@ else{
 journalString = journalString.replace(/"/g,""); //remove any quotes
 
 
-if((list[pubNum]["metadata"]["dois"][0]).hasOwnProperty('value')){
+if((list[pubNum]["metadata"]).hasOwnProperty('dois')){
   doiString = JSON.stringify( list[pubNum]["metadata"]["dois"][0]["value"],null,2);
   doiString = doiString.replace(/['"]+/g,''); //remove any quotes
 
