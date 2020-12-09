@@ -116,11 +116,13 @@ journalString = journalString.concat(" ");
 journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["journal_volume"],null,2));   
 journalString = journalString.concat(", ");
 
-tmpString = JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["artid"],null,2);
+//tmpString = JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["artid"],null,2);
 
-if( !(tmpString.includes("undefined")) ){
+//if( !(tmpString.includes("undefined")) ){
   journalString = journalString.concat(tmpString);  
-}
+//}
+
+journalString = journalString.concat( JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["artid"],null,2) );  
 
 journalString = journalString.concat(" (");
 journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["year"],null,2));  
