@@ -140,14 +140,21 @@ else{
 }
 journalString = journalString.replace(/"/g,""); //remove any quotes
 
-doiString = JSON.stringify( list[pubNum]["metadata"]["dois"][0]["value"],null,2);
-doiString = doiString.replace(/['"]+/g,''); //remove any quotes
 
-linkString = "<a href=\"http:\/\/dx.doi.org\/";
-linkString = linkString.concat(doiString);
-linkString = linkString.concat("\">");
-linkString = linkString.concat(journalString);
-linkString = linkString.concat("<\/a>");
+if((list[pubNum]["metadata"]["dois"][0]).hasOwnProperty('value')){
+  doiString = JSON.stringify( list[pubNum]["metadata"]["dois"][0]["value"],null,2);
+  doiString = doiString.replace(/['"]+/g,''); //remove any quotes
+
+  linkString = "<a href=\"http:\/\/dx.doi.org\/";
+  linkString = linkString.concat(doiString);
+  linkString = linkString.concat("\">");
+  linkString = linkString.concat(journalString);
+  linkString = linkString.concat("<\/a>");
+}
+else{ //no doi
+  linkString = journalString;
+}
+
 
 writeString = writeString.concat(linkString);
 
