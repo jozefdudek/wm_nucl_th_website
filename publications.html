@@ -118,7 +118,7 @@ journalString = journalString.concat(", ");
 
 tmpString = JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["artid"],null,2);
 
-if(tmpString != "undefined"){
+if(!(tmpString.includes("undefined")) ){
   journalString = journalString.concat(tmpString);  
   journalString = journalString.concat(" (");
 }
