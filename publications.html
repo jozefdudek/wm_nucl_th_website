@@ -107,34 +107,37 @@ writeString = writeString.replace(/"/g,"");
 
 
 // *** JOURNAL ***
-journalString = JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["journal_title"],null,2);
-journalString = journalString.concat(" ");
-
-journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["journal_volume"],null,2));   
-journalString = journalString.concat(", ");
-
-if((list[pubNum]["metadata"]["publication_info"][0]).hasOwnProperty('artid')){
-  journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["artid"],null,2));
+if((list[pubNum]["metadata"]["publication_info"][0]).hasOwnProperty('pubinfo_freetext')){
+  journalString = JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["pubinfo_freetext"],null,2);
 }
 else{
-  if((list[pubNum]["metadata"]["publication_info"][0]).hasOwnProperty('journal_issue')){
+
+  journalString = JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["journal_title"],null,2);
+  journalString = journalString.concat(" ");
+
+  journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["journal_volume"],null,2));   
+  journalString = journalString.concat(", ");
+
+  if((list[pubNum]["metadata"]["publication_info"][0]).hasOwnProperty('artid')){
+    journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["artid"],null,2));
+  }
+  else{
+    if((list[pubNum]["metadata"]["publication_info"][0]).hasOwnProperty('journal_issue')){
     journalString = journalString.concat(JSON.stringify(
-  list[pubNum]["metadata"]["publication_info"][0]["journal_issue"],null,2));
+    list[pubNum]["metadata"]["publication_info"][0]["journal_issue"],null,2));
+  }
+  journalString = journalString.concat("  ");
+  journalString = journalString.concat(JSON.stringify(
+    list[pubNum]["metadata"]["publication_info"][0]["page_start"],null,2));
+  journalString = journalString.concat("-");
+  journalString = journalString.concat(JSON.stringify(
+    list[pubNum]["metadata"]["publication_info"][0]["page_end"],null,2));
+  }
+
+  journalString = journalString.concat(" (");
+  journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["year"],null,2));  
+  journalString = journalString.concat(")");
 }
-journalString = journalString.concat("  ");
-journalString = journalString.concat(JSON.stringify(
-  list[pubNum]["metadata"]["publication_info"][0]["page_start"],null,2));
-journalString = journalString.concat("-");
-journalString = journalString.concat(JSON.stringify(
-  list[pubNum]["metadata"]["publication_info"][0]["page_end"],null,2));
-}
-
-//journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["artid"],null,2));  
-
-journalString = journalString.concat(" (");
-journalString = journalString.concat(JSON.stringify( list[pubNum]["metadata"]["publication_info"][0]["year"],null,2));  
-journalString = journalString.concat(")");
-
 journalString = journalString.replace(/"/g,""); //remove any quotes
 
 doiString = JSON.stringify( list[pubNum]["metadata"]["dois"][0]["value"],null,2);
