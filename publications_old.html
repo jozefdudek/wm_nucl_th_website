@@ -1,0 +1,143 @@
+---
+layout: default
+---
+
+
+<a id="publications"></a><h1>Journal Publications</h1>
+<div>
+<!--  <p id="test">trying to fix the mathjax</p></br> -->
+  
+  <p id="demo"></p></br>
+
+  
+</div>
+  
+<script>
+var HttpClient = function() {
+  this.get = function(aUrl, aCallback) {
+    var anHttpRequest = new XMLHttpRequest();
+
+    anHttpRequest.onreadystatechange = function() { 
+      if (anHttpRequest.readyState == 4
+          && anHttpRequest.status == 200){ aCallback(anHttpRequest.responseText); }
+    }
+
+    anHttpRequest.open( "GET", aUrl, false );   
+    anHttpRequest.send( null );
+  }
+}
+
+for(year = 2020; year >= 2010; year--){
+
+ writeString = "</br><h2>== ";
+ writeString = writeString.concat( year.toString() );
+ writeString = writeString.concat(" =======================================</h2></br>");
+
+client = new HttpClient();
+
+//url = 'https://inspirehep.net//search?p=find+a+J.J.Dudek.2+and+jy+2017&of=recjson&ot=authors,title,publication_info,doi';
+
+//url =
+'https://inspirehep.net//search?p=find+author:dudek+and+aff+william+or+author:shanahan+and+aff+william+and+jy+';
+
+url = 'https://old.inspirehep.net/search?ln=en&ln=en&p=';
+
+if(year >= 2019){
+url = url.concat('find+%28a+orginos+or+a+J.J.Dudek.2+or+a+monahan+or+a+c.e.carlson.1%29+and+tc+p+and+jy+');
+}
+else if(year >= 2017){
+url = url.concat('find+%28a+orginos+or+a+J.J.Dudek.2+or+a+c.e.carlson.1%29+and+jy+');
+}
+else{
+url = url.concat('find+%28a+orginos+or+a+c.e.carlson.1%29+and+jy+');
+}
+
+//url = 'https://inspirehep.net/search?ln=en&ln=en&p=find+%28a+orginos+or+a+shanahan+or+a+dudek+or+a+carlson%29+and+aff+william+and+jy+';
+url = url.concat( year.toString() );
+url = url.concat('&of=recjson&ot=authors,title,publication_info,doi');
+
+client.get(url,
+ function(response) {
+  yearList = JSON.parse(response);
+
+  for (var pub = 0; pub < yearList.length; pub++) {
+
+    writeString = writeString.concat("<b>");
+    writeString = writeString.concat(JSON.stringify(yearList[pub]["title"]["title"],null,2));
+    writeString = writeString.concat("</b></br>");
+
+    etAl = false;
+    if (yearList[pub]["authors"].length <= 9){ authsToShow = yearList[pub]["authors"].length; }
+    else { authsToShow = 1; etAl = true; }
+
+    writeString = writeString.concat("<i>");
+
+    for (var auth = 0; auth < authsToShow; auth++ ){
+      nameString = JSON.stringify(yearList[pub]["authors"][auth]["first_name"],null,2);
+      nameString = nameString.concat(" ")
+      nameString = nameString.concat(JSON.stringify(yearList[pub]["authors"][auth]["last_name"],null,2));
+
+      writeString = writeString.concat(nameString);
+
+      if (authsToShow > 1){
+        if (auth < (authsToShow-2)){
+          writeString = writeString.concat(", ");
+        }
+        if (auth == authsToShow -2){
+          writeString = writeString.concat(" and ")
+        }
+      }      
+    } //next author
+
+    if(etAl){ writeString = writeString.concat(" et.al."); }
+
+    writeString = writeString.concat("</i></br>");
+    writeString = writeString.replace(/"/g,"");
+
+    if (JSON.stringify(yearList[pub]["publication_info"],null,2) != "null"){
+      if (yearList[pub]["publication_info"]["title"] != null){
+        journalString = JSON.stringify(yearList[pub]["publication_info"]["title"],null,2);
+        journalString = journalString.concat(" ");
+        journalString = journalString.concat(JSON.stringify(yearList[pub]["publication_info"]["volume"],null,2));      
+        journalString = journalString.concat(", ");
+        journalString = journalString.concat(JSON.stringify(yearList[pub]["publication_info"]["pagination"],null,2));    
+        journalString = journalString.concat(" (");
+        journalString = journalString.concat(JSON.stringify(yearList[pub]["publication_info"]["year"],null,2));      
+        journalString = journalString.concat(")");
+       }
+    }
+    journalString = journalString.replace(/"/g,"");
+
+    doiString = JSON.stringify(yearList[pub]["doi"],null,2);
+    doiString = doiString.replace(/"/g,"");
+
+    linkString = "<a href=\"http:\/\/dx.doi.org\/\"";
+    linkString = linkString.concat(doiString);
+    linkString = linkString.concat("\">");
+    linkString = linkString.concat(journalString);
+    linkString = linkString.concat("<\/a>");
+
+    writeString = writeString.concat(linkString);
+
+    writeString = writeString.concat("</br>--</br>");
+
+  } //next publication 
+
+  //to wipe out latex chars
+  //writeString = writeString.replace(/\$/g,"");
+  //writeString = writeString.replace(/\\/g,"");
+  //writeString = writeString.concat("<\/p>");
+
+}); //end the client get function
+
+//replace double backslash with single backslash
+writeString = writeString.replace(/\\\\/g,"\\");
+
+document.getElementById("demo").innerHTML += writeString;
+
+};//NEXT YEAR
+
+</script>
+
+ 
+ 
