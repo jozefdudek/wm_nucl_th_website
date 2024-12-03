@@ -39,7 +39,8 @@ url = 'https://inspirehep.net/api/literature?';
 <!-- requested data types in the json entry -->
 url = url.concat('fields=authors,titles,publication_info,dois');
 
-if(year >= 2019){      url = url.concat('&q=find+(+a+j.j.dudek.2+or+a+c.j.monahan.1+or+a+c.e.carlson.1+or+a+k.n.orginos.1)'); }
+if(year >= 2023){      url = url.concat('&q=find+(+a+j.j.dudek.2+or+a+a.jackura.1+or+a+c.e.carlson.1+or+a+k.n.orginos.1)'); }
+else if(year >= 2019){ url = url.concat('&q=find+(+a+j.j.dudek.2+or+a+c.j.monahan.1+or+a+c.e.carlson.1+or+a+k.n.orginos.1)'); }
 else if(year >= 2017){ url = url.concat('&q=find+(+a+j.j.dudek.2+or+a+c.e.carlson.1+or+a+k.n.orginos.1)'); }
 else{                  url = url.concat('&q=find+(+a+c.e.carlson.1+or+a+k.n.orginos.1)'); }
 
