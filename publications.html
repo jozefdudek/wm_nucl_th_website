@@ -58,7 +58,7 @@ client.get(
 url,
 function(response){
 // *** DEBUG ***
-writeString = writeString.concat(response); //would write the entire JSON entry
+//writeString = writeString.concat(response); //would write the entire JSON entry
 
 parsed = JSON.parse(response);
 list = parsed["hits"]["hits"];
