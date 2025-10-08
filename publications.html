@@ -57,7 +57,8 @@ url = url.concat( year.toString() );
 client.get(
 url,
 function(response){
-//  writeString = writeString.concat(response); //would write the entire JSON entry
+// *** DEBUG ***
+writeString = writeString.concat(response); //would write the entire JSON entry
 
 parsed = JSON.parse(response);
 list = parsed["hits"]["hits"];
@@ -65,7 +66,7 @@ list = parsed["hits"]["hits"];
 
 
 // *** DEBUG ***
-document.getElementById("demo").innerHTML += list.length.toString();
+//document.getElementById("demo").innerHTML += list.length.toString();
 // *************
 
 // *** LINE BREAK ***
