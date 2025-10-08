@@ -63,8 +63,15 @@ parsed = JSON.parse(response);
 list = parsed["hits"]["hits"];
 
 
+
+// *** DEBUG ***
+document.getElementById("demo").innerHTML += list.length.toString();
+// *************
+
 // *** LINE BREAK ***
 writeString = writeString.concat("-----</br>");
+
+
 
 // *** LOOP OVER PUBLICATIONS ***
 for (var pubNum = 0; pubNum < list.length; pubNum++) {
