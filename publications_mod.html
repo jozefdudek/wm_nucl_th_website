@@ -159,10 +159,26 @@ layout: default
     if (authors) {
       html += `${authors}<br>`;
     }
-    html += journal;
-    html += "<br>-----<br>";
+    html += `${journal}<br>-----<br>`;
 
     return html;
+  }
+
+  async function typesetMath(element) {
+    if (!window.MathJax) {
+      return;
+    }
+
+    // MathJax v3+
+    if (typeof window.MathJax.typesetPromise === "function") {
+      await window.MathJax.typesetPromise([element]);
+      return;
+    }
+
+    // MathJax v2
+    if (window.MathJax.Hub && typeof window.MathJax.Hub.Queue === "function") {
+      window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, element]);
+    }
   }
 
   async function renderPublications() {
@@ -185,6 +201,7 @@ layout: default
     }
 
     output.innerHTML = html;
+    await typesetMath(output);
   }
 
   renderPublications();
