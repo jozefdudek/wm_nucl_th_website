@@ -1,0 +1,192 @@
+---
+layout: default
+---
+
+<a id="publications"></a>
+<h1>Journal Publications</h1>
+
+<p>Check Inspire for more complete publication records of group members.</p>
+
+<br><br>
+
+<div>
+  <p id="demo"></p>
+</div>
+
+<script>
+(() => {
+  const START_YEAR = 2026;
+  const END_YEAR = 2010;
+  const OUTPUT_ID = "demo";
+
+  function buildAuthorQuery(year) {
+    if (year >= 2023) {
+      return "find+(+a+j.j.dudek.2+or+a+a.jackura.1+or+a+c.e.carlson.1+or+a+k.n.orginos.1)";
+    }
+    if (year >= 2019) {
+      return "find+(+a+j.j.dudek.2+or+a+c.j.monahan.1+or+a+c.e.carlson.1+or+a+k.n.orginos.1)";
+    }
+    if (year >= 2017) {
+      return "find+(+a+j.j.dudek.2+or+a+c.e.carlson.1+or+a+k.n.orginos.1)";
+    }
+    return "find+(+a+c.e.carlson.1+or+a+k.n.orginos.1)";
+  }
+
+  function buildInspireUrl(year) {
+    const fields = "authors,titles,publication_info,dois";
+    const query = `${buildAuthorQuery(year)}+and+tc+p+and+jy+${year}`;
+    return `https://inspirehep.net/api/literature?fields=${fields}&q=${query}`;
+  }
+
+  async function fetchPublications(year) {
+    const response = await fetch(buildInspireUrl(year));
+    if (!response.ok) {
+      throw new Error(`Request failed for ${year}: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data?.hits?.hits ?? [];
+  }
+
+  function cleanText(value) {
+    return String(value ?? "")
+      .replace(/\\\\/g, "\\")
+      .replace(/\\{o}/g, "&ouml;");
+  }
+
+  function formatAuthors(authors = []) {
+    if (!authors.length) {
+      return "";
+    }
+
+    const useEtAl = authors.length >= 9;
+    const authorsToShow = useEtAl ? authors.slice(0, 1) : authors;
+
+    const names = authorsToShow.map((author) => {
+      const first = cleanText(author.first_name ?? "");
+      const last = cleanText(author.last_name ?? "");
+      return `${first} ${last}`.trim();
+    });
+
+    let authorText = "";
+    if (names.length === 1) {
+      authorText = names[0];
+    } else if (names.length === 2) {
+      authorText = `${names[0]} and ${names[1]}`;
+    } else {
+      authorText = `${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}`;
+    }
+
+    if (useEtAl) {
+      authorText += " et al.";
+    }
+
+    return `<i>${authorText}</i>`;
+  }
+
+  function formatJournal(publicationInfo = []) {
+    const info = publicationInfo[0];
+    if (!info) {
+      return "";
+    }
+
+    if (info.pubinfo_freetext) {
+      return cleanText(info.pubinfo_freetext);
+    }
+
+    const parts = [];
+
+    if (info.journal_title) {
+      parts.push(cleanText(info.journal_title));
+    }
+
+    if (info.journal_volume) {
+      parts.push(cleanText(info.journal_volume));
+    }
+
+    if (info.artid) {
+      parts.push(cleanText(info.artid));
+    } else {
+      const pageBits = [];
+
+      if (info.journal_issue) {
+        pageBits.push(cleanText(info.journal_issue));
+      }
+
+      const pageStart = cleanText(info.page_start ?? "");
+      const pageEnd = cleanText(info.page_end ?? "");
+
+      if (pageStart && pageEnd) {
+        pageBits.push(`${pageStart}-${pageEnd}`);
+      } else if (pageStart) {
+        pageBits.push(pageStart);
+      }
+
+      if (pageBits.length) {
+        parts.push(pageBits.join("  "));
+      }
+    }
+
+    let journalText = parts.join(", ").replace(", ,", ",").trim();
+
+    if (info.year) {
+      journalText += ` (${cleanText(info.year)})`;
+    }
+
+    return journalText;
+  }
+
+  function formatJournalLink(metadata = {}) {
+    const journalText = formatJournal(metadata.publication_info);
+    const doi = metadata.dois?.[0]?.value;
+
+    if (!doi) {
+      return journalText;
+    }
+
+    const cleanDoi = cleanText(doi).replace(/['"]+/g, "");
+    return `<a href="https://doi.org/${cleanDoi}">${journalText}</a>`;
+  }
+
+  function formatPublication(publication) {
+    const metadata = publication?.metadata ?? {};
+    const title = cleanText(metadata.titles?.[0]?.title ?? "Untitled");
+    const authors = formatAuthors(metadata.authors);
+    const journal = formatJournalLink(metadata);
+
+    let html = "";
+    html += `<b>${title}</b><br>`;
+    if (authors) {
+      html += `${authors}<br>`;
+    }
+    html += journal;
+    html += "<br>-----<br>";
+
+    return html;
+  }
+
+  async function renderPublications() {
+    const output = document.getElementById(OUTPUT_ID);
+    let html = "";
+
+    for (let year = START_YEAR; year >= END_YEAR; year -= 1) {
+      html += `<br><h2>~~ ${year} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</h2><br>`;
+      html += "-----<br>";
+
+      try {
+        const publications = await fetchPublications(year);
+        for (const publication of publications) {
+          html += formatPublication(publication);
+        }
+      } catch (error) {
+        console.error(error);
+        html += `Unable to load publications for ${year}.<br>-----<br>`;
+      }
+    }
+
+    output.innerHTML = html;
+  }
+
+  renderPublications();
+})();
+</script>
