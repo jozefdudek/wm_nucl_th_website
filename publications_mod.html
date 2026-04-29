@@ -34,8 +34,7 @@ layout: default
 
   function buildInspireUrl(year) {
     const fields = "authors,titles,publication_info,dois";
-   // const query =`${buildAuthorQuery(year)}+and+tc+p+and+jy+${year}`;
-    const query = `${buildAuthorQuery(year)}+and+jy+${year}`;
+    const query =`${buildAuthorQuery(year)}+and+tc+p+and+jy+${year}`;
     return `https://inspirehep.net/api/literature?fields=${fields}&q=${query}`;
   }
 
